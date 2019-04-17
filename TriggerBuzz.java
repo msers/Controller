@@ -33,10 +33,13 @@ public class TriggerBuzz
          
             System.out.println("Seeya Nerd");
             break;
+            
          }
          if(currState.a) 
          {
+         
             System.out.println("\"A\" on \"" + currState.controllerType + "\" is pressed");
+            
          }
       }
       
