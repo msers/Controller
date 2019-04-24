@@ -49,12 +49,15 @@ public class TriggerBuzz
          
             System.out.println(p1 + ": not connected");
             
+            break;
+            
          }
          
          if(!player2.isConnected) 
          {
          
             System.out.println(p2 + ": not connected");
+            
             break;
             
          }
@@ -80,6 +83,7 @@ public class TriggerBuzz
             a1.whichPlayer(player1, 0);
             
             break;
+            
          }
          
          if(player2.lb || player2.rb) 
@@ -90,6 +94,7 @@ public class TriggerBuzz
             a1.whichPlayer(player2, 1);
             
             break;
+            
          }
          
          if(player3.lb || player3.rb)
@@ -100,11 +105,13 @@ public class TriggerBuzz
             a1.whichPlayer(player3, 2);
             
             break;
+            
          }
 
       }
       
       System.out.println("exit");
+      System.exit(0);
       
    }
    
