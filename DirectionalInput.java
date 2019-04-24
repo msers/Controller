@@ -23,60 +23,76 @@ import javafx.application.Application;
 public class DirectionalInput 
 {
 
-   public static int NUM_CONTROLLERS = 1;
+      //public static int NUM_CONTROLLERS = 1;
    
-      public static void main(String args[])
+      public static void whichPlayer(ControllerState x, int controlNum)
       {
-   
-         ControllerManager controllers = new ControllerManager(NUM_CONTROLLERS);
+      
+         ControllerManager controllers = new ControllerManager();
          controllers.initSDLGamepad();
+         
          
          try
          {
             
-            while(true)
+            while(!x.a)
             {
-               ControllerState currController = controllers.getState(0);
+               x = controllers.getState(controlNum);
+               
                Robot robot = new Robot();
             
-               if(currController.a) //Uses Space on the keyboard to select tile
+               if(x.a) //Uses Space on the keyboard to select tile
                {
                
                   System.out.println("Space");
-                  robot.keyPress(32);
-               
+                  robot.keyPress(24);
+                  break;
+                  
                }
                
-               if(currController.dpadUp) //Uses Space on the keyboard to select tile
+               if(x.dpadUp) // Up
                {
                
                   System.out.println("Up");
-                  //robot.keyPress(94);
+                  
+                  robot.keyPress(KeyEvent.VK_UP);
+                  
+                  break;
                
                }
 
-               if(currController.dpadDown) //Uses Space on the keyboard to select tile
+               if(x.dpadDown) // Down
                {
                
                   System.out.println("Down");
-                  //robot.keyPress(95);
+                  
+                  robot.keyPress(KeyEvent.VK_DOWN);
+                  
+                  break;
                
                }
 
-               if(currController.dpadLeft) //Uses Space on the keyboard to select tile
+               if(x.dpadLeft) // Left
                {
                
                   System.out.println("Left");
-                  //robot.keyPress(66);
+                  
+                  robot.keyPress(KeyEvent.VK_LEFT);
+                  
+                  break;
                
                }
-               if(currController.dpadRight) //Uses Space on the keyboard to select tile
+               if(x.dpadRight) // Right
                {
                
                   System.out.println("Right");
-                  //robot.keyPress(65);
+                  
+                  robot.keyPress(KeyEvent.VK_RIGHT);
+                  
+                  break;
                
                }
+               
                
             }
             
