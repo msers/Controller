@@ -6,9 +6,6 @@
 
 */
 
-
-package com.studiohartman.jamepad.tester;
-
 import com.studiohartman.jamepad.ControllerIndex;
 import com.studiohartman.jamepad.ControllerManager;
 import com.studiohartman.jamepad.*;
@@ -23,7 +20,7 @@ import javafx.application.Application;
 public class TriggerBuzz
 {
    public static int NUM_CONTROLLERS = 3;
-
+   
    public static void main(String args[])
    {
    
@@ -33,6 +30,8 @@ public class TriggerBuzz
       String p1 = "player_1";
       String p2 = "player_2";
       String p3 = "player_3";
+      
+      DirectionalInput a1 = new DirectionalInput();
       
       
       while(true) 
@@ -49,13 +48,13 @@ public class TriggerBuzz
          {
          
             System.out.println(p1 + ": not connected");
-            break;
             
          }
+         
          if(!player2.isConnected) 
          {
          
-            System.out.println(p1 + ": not connected");
+            System.out.println(p2 + ": not connected");
             break;
             
          }
@@ -73,25 +72,34 @@ public class TriggerBuzz
          //Buzzed
          //////
          
-         if(player1.lb) 
+         if(player1.lb || player1.rb) 
          {
          
             System.out.println(p1 + ": Buzzed");
+            
+            a1.whichPlayer(player1, 0);
+            
             break;
          }
          
-         if(player2.lb) 
+         if(player2.lb || player2.rb) 
          {
          
             System.out.println(p2 + ": Buzzed");
-            break;
             
+            a1.whichPlayer(player2, 1);
+            
+            break;
          }
-         if(player3.lb)
+         
+         if(player3.lb || player3.rb)
          {
          
             System.out.println(p3 + ": Buzzed");
-         
+            
+            a1.whichPlayer(player3, 2);
+            
+            break;
          }
 
       }
@@ -99,5 +107,5 @@ public class TriggerBuzz
       System.out.println("exit");
       
    }
-          
+   
 }
