@@ -22,84 +22,92 @@ import javafx.application.Application;
 
 public class DirectionalInput 
 {
-
-      //public static int NUM_CONTROLLERS = 1;
    
-      public static void whichPlayer(ControllerState x, int controlNum)
+      public static void whichPlayer(ControllerState currController, int controlNum)
       {
       
          ControllerManager controllers = new ControllerManager();
          controllers.initSDLGamepad();
          
-         
          try
          {
             
-            while(!x.a)
+            do
             {
-               x = controllers.getState(controlNum);
+            
+               currController = controllers.getState(controlNum);
                
                Robot robot = new Robot();
             
-               if(x.a) //Uses Space on the keyboard to select tile
+               if(currController.a) //Uses Space on the keyboard to select tile
                {
                
                   System.out.println("Space");
-                  robot.keyPress(24);
-                  break;
+                  
+                  robot.keyPress(KeyEvent.VK_SPACE);
+                  
+                  robot.keyRelease(KeyEvent.VK_SPACE);
+                 
                   
                }
-               
-               if(x.dpadUp) // Up
+                            
+               if(currController.dpadUp) // Up
                {
                
                   System.out.println("Up");
                   
                   robot.keyPress(KeyEvent.VK_UP);
                   
-                  break;
-               
+                  robot.keyRelease(KeyEvent.VK_UP);
+                  
+                  
                }
-
-               if(x.dpadDown) // Down
+               
+               if(currController.dpadDown) // Down
                {
                
                   System.out.println("Down");
                   
                   robot.keyPress(KeyEvent.VK_DOWN);
                   
-                  break;
-               
+                  robot.keyRelease(KeyEvent.VK_DOWN);
+                  
+                  
                }
-
-               if(x.dpadLeft) // Left
+               
+               if(currController.dpadLeft) // Left
                {
                
                   System.out.println("Left");
                   
                   robot.keyPress(KeyEvent.VK_LEFT);
                   
-                  break;
-               
+                  robot.keyRelease(KeyEvent.VK_LEFT);
+                  
+                  
                }
-               if(x.dpadRight) // Right
+               
+               if(currController.dpadRight) // Right
                {
                
                   System.out.println("Right");
                   
                   robot.keyPress(KeyEvent.VK_RIGHT);
                   
-                  break;
-               
+                  robot.keyRelease(KeyEvent.VK_RIGHT);
+                  
+                  
                }
                
-               
-            }
+            }while(!currController.a);
             
          }
+         
          catch(AWTException e)
          {
-      
+            
+            System.out.println("CATCH: \n");
+            
             e.printStackTrace();
       
          }
