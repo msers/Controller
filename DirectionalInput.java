@@ -1,4 +1,4 @@
-/*
+=/*
 
 
 * Gampad input 
@@ -32,35 +32,33 @@ public class DirectionalInput
          
          controllers.update();
          
-         try
-         {
          
-            Robot robot = new Robot();
+         try
+         { 
             
-            while(true)
+            do
             {
-               
+            
                currController = controllers.getState(controlNum);
                
-               controllers.update();
-               
+               Robot robot = new Robot();
+            
                if(currController.a) //Uses Space on the keyboard to select tile
                {
-                  
-                  //System.out.println("Space");
+               
+                  System.out.println("Space");
                   
                   robot.keyPress(KeyEvent.VK_SPACE);
                   
                   robot.keyRelease(KeyEvent.VK_SPACE);
-                    
-                  break;
                  
+                  
                }
                             
-               else if(currController.dpadUp) // Up
+               if(currController.dpadUpJustPressed) // Up
                {
-               
-                  //System.out.println("Up");
+                
+                  System.out.println("Up");
                   
                   robot.keyPress(KeyEvent.VK_UP);
                   
@@ -69,21 +67,22 @@ public class DirectionalInput
                   
                }
                
-               else if(currController.dpadDown) // Down
+               if(currController.dpadDownJustPressed) // Down
                {
                
-                  //System.out.println("Down");
+                  System.out.println("Down");
                   
                   robot.keyPress(KeyEvent.VK_DOWN);
                   
                   robot.keyRelease(KeyEvent.VK_DOWN);
                   
+                  
                }
                
-               else if(currController.dpadLeft) // Left
+               if(currController.dpadLeftJustPressed) // Left
                {
                
-                  //System.out.println("Left");
+                  System.out.println("Left");
                   
                   robot.keyPress(KeyEvent.VK_LEFT);
                   
@@ -92,10 +91,10 @@ public class DirectionalInput
                   
                }
                
-               else if(currController.dpadRight) // Right
-               {
+               if(currController.dpadRightJustPressed) // Right
+                {
                
-                  //System.out.println("Right");
+                  System.out.println("Right");
                   
                   robot.keyPress(KeyEvent.VK_RIGHT);
                   
@@ -104,7 +103,7 @@ public class DirectionalInput
                   
                }
                
-            }
+            }while(!currController.a);
             
          }
          
