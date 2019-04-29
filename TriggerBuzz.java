@@ -31,7 +31,7 @@ public class TriggerBuzz
       String p2 = "player_2";
       String p3 = "player_3";
       
-      DirectionalInput masterControl = new DirectionalInput();
+      DirectionalInput a1 = new DirectionalInput();
       
       
       while(true) 
@@ -80,7 +80,9 @@ public class TriggerBuzz
          
             System.out.println(p1 + ": Buzzed");
             
-            masterControl.whichPlayer(player1, 0);
+            a1.whichPlayer(player1, 0);
+            
+            //break;
             
          }
          
@@ -89,7 +91,9 @@ public class TriggerBuzz
          
             System.out.println(p2 + ": Buzzed");
             
-            masterControl.whichPlayer(player2, 1);
+            a1.whichPlayer(player2, 1);
+            
+            //break;
             
          }
          
@@ -98,11 +102,13 @@ public class TriggerBuzz
          
             System.out.println(p3 + ": Buzzed");
             
-            masterControl.whichPlayer(player3, 2);
+            a1.whichPlayer(player3, 2);
+            
+            break;
             
          }
 
-      }
+      } 
       
       System.out.println("exit");
       System.exit(0);
